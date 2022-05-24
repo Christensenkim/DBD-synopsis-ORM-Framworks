@@ -8,4 +8,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Entity-Framework\Entity-Framework.csproj" />
+    <ProjectReference Include="..\Hibernate\Hibernate.csproj" />
+  </ItemGroup>
+
 </Project>
