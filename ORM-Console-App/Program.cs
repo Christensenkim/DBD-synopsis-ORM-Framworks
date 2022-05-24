@@ -1,8 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Entity_Framework;
 using Hibernate;
 
 Console.WriteLine("Hello, World!");
 
-var hibernate = new HibernateService();
+#region EFTest
+var ef = new EntityFrameworkService();
+ef.Test();
+#endregion
 
-hibernate.test();
+
+#region HibernateTest
+//var hibernate = new HibernateService();
+//hibernate.test();
+#endregion
