@@ -1,4 +1,4 @@
-﻿namespace Entity_Framework
+﻿namespace Hibernate
 {
     public class Class1
     {
