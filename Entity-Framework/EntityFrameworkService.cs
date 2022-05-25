@@ -16,52 +16,49 @@ namespace Entity_Framework
         {
             using (var db =  new EFDbContext())
             {
-                var prod = new Products
+                var emp = new Employee
                 {
-                    Name = mock.MockEmployeeName(),
-                    Category = mock.MockSkillDescription(),
-                    Discontinued = mock.MockProductsDiscontinued()
+                    Firstname = mock.MockEmployeeFirstName(),
+                    Lastname = mock.MockEmployeeLastName()
                 };
 
-                db.Product.Add(prod);
+                db.Employee.Add(emp);
                 db.SaveChanges();
             }
         }
 
-        public Products findProduct()
+        public Employee FindEmployee()
         {
             using (var db = new EFDbContext())
             {
-                var targetToRemove = db.Product.FirstOrDefault();
-                var product = new Products
+                var targetToRemove = db.Employee.FirstOrDefault();
+                var emp = new Employee
                 {
-                    Id = targetToRemove.Id,
-                    Name = targetToRemove.Name,
-                    Category = targetToRemove.Category,
-                    Discontinued = targetToRemove.Discontinued
+                    EmployeeID = targetToRemove.EmployeeID,
+                    Firstname = targetToRemove.Firstname,
+                    Lastname = targetToRemove.Lastname
                 };
-                return product;
+                return emp;
             }
         }
 
-        public void Update_Test(Products productEF)
+        public void Update_Test(Employee emp)
         {
             using (var db = new EFDbContext())
             {
-                productEF.Name = mock.MockEmployeeName();
-                productEF.Category = mock.MockSkillDescription();
-                productEF.Discontinued = mock.MockProductsDiscontinued();
-                db.Update(productEF);
+                emp.Firstname = mock.MockEmployeeFirstName();
+                emp.Lastname = mock.MockEmployeeLastName();
 
+                db.Update(emp);
                 db.SaveChanges();
             }
         }
 
-        public void Delete_Test(Products product)
+        public void Delete_Test(Employee emp)
         {
             using (var db = new EFDbContext())
             {
-                db.Product.Remove(product);
+                db.Employee.Remove(emp);
                 db.SaveChanges();
             }
         }
@@ -70,7 +67,7 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                db.Product.ToList();
+                db.Employee.ToList();
             }
         }
     }
