@@ -13,7 +13,7 @@ namespace Entity_Framework
         private string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
 
 
-        public DbSet<Products> Products { get; set; }
+        public DbSet<Products> Product { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

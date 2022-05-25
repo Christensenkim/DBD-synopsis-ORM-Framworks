@@ -20,7 +20,7 @@ namespace Entity_Framework
                     Discontinued = true
                 };
 
-                db.Products.Add(prod);
+                db.Product.Add(prod);
                 db.SaveChanges();
             }
         }
@@ -29,8 +29,15 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                var targetToRemove = db.Products.First();
-                return targetToRemove;
+                var targetToRemove = db.Product.FirstOrDefault();
+                var product = new Products
+                {
+                    Id = targetToRemove.Id,
+                    Name = targetToRemove.Name,
+                    Category = targetToRemove.Category,
+                    Discontinued = targetToRemove.Discontinued
+                };
+                return product;
             }
         }
 
@@ -38,7 +45,8 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                db.Products.Remove(product);
+                db.Product.Remove(product);
+                db.SaveChanges();
             }
         }
     }

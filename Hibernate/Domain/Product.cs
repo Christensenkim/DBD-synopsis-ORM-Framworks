@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hibernate.Domain
 {
-    public class Products
+    public class Product
     {
         public virtual Guid Id { get; set; }
         public virtual string Name { get; set; }

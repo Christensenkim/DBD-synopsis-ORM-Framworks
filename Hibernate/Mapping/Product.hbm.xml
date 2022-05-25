@@ -3,7 +3,7 @@
 				   assembly="Hibernate"
 				   namespace="Hibernate.Domain">
 
-	<class name="Products">
+	<class name="Product">
 		<id name="Id">
 			<generator class="guid"/>
 		</id>

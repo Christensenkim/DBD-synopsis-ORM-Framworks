@@ -28,10 +28,16 @@ namespace ORM_Console_App
 
         public void Delete_Test()
         {
-            var product = ef.findProduct();
+            var productEF = ef.findProduct();
             var watchEF = System.Diagnostics.Stopwatch.StartNew();
-            ef.Delete_Test(product);
+            ef.Delete_Test(productEF);
             watchEF.Stop();
+            Console.WriteLine("Entity Framework Delete time " + watchEF.Elapsed.ToString());
+
+            var productNH = hibernate.findProduct();
+            var watchHibernate = System.Diagnostics.Stopwatch.StartNew();
+            hibernate.Delete_Test(productNH);
+            watchHibernate.Stop();
             Console.WriteLine("Entity Framework Delete time " + watchEF.Elapsed.ToString());
         }
     }

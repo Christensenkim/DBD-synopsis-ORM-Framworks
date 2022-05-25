@@ -24,7 +24,7 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                Products product = new Products
+                Product product = new Product
                 {
                     Name = "Kim",
                     Category = "BIG GUY",
@@ -42,6 +42,36 @@ namespace Hibernate
             //    _session.Transaction.Commit();
             //    Console.WriteLine(products.FirstOrDefault(x => x.Name == "Kim").Id);
             //}
+        }
+
+        public Product findProduct()
+        {
+            _myconfig = new Configuration();
+            _myconfig.Configure();
+            _sessionFactory = _myconfig.BuildSessionFactory();
+            _session = _sessionFactory.OpenSession();
+
+            using (_session.BeginTransaction())
+            {
+                ICriteria criteria = _session.CreateCriteria<Product>();
+                Product product = criteria.UniqueResult<Product>();
+
+                return product;
+            }
+        }
+
+        public void Delete_Test(Product productNH)
+        {
+            _myconfig = new Configuration();
+            _myconfig.Configure();
+            _sessionFactory = _myconfig.BuildSessionFactory();
+            _session = _sessionFactory.OpenSession();
+
+            using (_session.BeginTransaction())
+            {
+                _session.Delete(productNH);
+                _session.Transaction.Commit();
+            }
         }
     }
 }
