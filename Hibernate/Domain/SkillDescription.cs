@@ -8,7 +8,7 @@ namespace Hibernate.Domain
 {
     public class SkillDescription
     {
-        public Guid SkillID { get; set; }
+        public Guid SkillId { get; set; }
         public string Description { get; set; }
     }
 }

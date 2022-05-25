@@ -15,10 +15,10 @@ namespace ORM_Console_App
 
         public void Insert_Test()
         {
-            var watchEF = System.Diagnostics.Stopwatch.StartNew();
-            ef.Insert_Test();
-            watchEF.Stop();
-            Console.WriteLine("Entity Framework insert time " + watchEF.Elapsed.ToString());
+            //var watchEF = System.Diagnostics.Stopwatch.StartNew();
+            //ef.Insert_Test();
+            //watchEF.Stop();
+            //Console.WriteLine("Entity Framework insert time " + watchEF.Elapsed.ToString());
 
             var watchHibernate = System.Diagnostics.Stopwatch.StartNew();
             hibernate.Insert_Test();

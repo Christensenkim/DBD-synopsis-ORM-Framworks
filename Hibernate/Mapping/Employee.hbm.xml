@@ -4,32 +4,35 @@
 				   namespace="Hibernate.Domain">
 
 	<class name="Employee">
-		<id name="EmployeeID">
+		
+		<id name="EmployeeId">
 			<generator class="guid"/>
 		</id>
+		
 		<property name ="Firstname"/>
+		
 		<property name ="Lastname"/>
+		
 		<many-to-one name ="EmployeeSkill"
-					 column="EmployeeID"
-					 not-null="true"/>
+					 column="EmployeeId"/>
+		
 	</class>
 
 	<class name="EmployeeSkill">
-		<id name="EmployeeID">
+		<id name="EmployeeId">
 			<generator class="guid"/>
 		</id>
-		<id name="SkillID">
+		<id name="SkillId">
 			<generator class="guid"/>
 		</id>
 	</class>
 
 	<class name ="SkillDescription">
-		<id name="SkillID">
+		<id name="SkillId">
 			<generator class="guid"/>
 		</id>
 		<property name="Description"/>
 		<many-to-one name ="EmployeeSkill"
-			 column="SkillID"
-			 not-null="true"/>
+			 column="SkillId"/>
 	</class>
 </hibernate-mapping>
