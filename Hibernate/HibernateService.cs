@@ -28,8 +28,8 @@ namespace Hibernate
             {
                 Employee employee = new Employee
                 {
-                    Firstname = mock.MockProductsName(),
-                    Lastname = mock.MockProductsCategory()
+                    Firstname = mock.MockEmployeeFirstName(),
+                    Lastname = mock.MockEmployeeLastName()
                 };
 
                 _session.Save(employee);
@@ -46,8 +46,8 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                employeeNH.Firstname = mock.MockProductsName();
-                employeeNH.Lastname = mock.MockProductsCategory();
+                employeeNH.Firstname = mock.MockEmployeeFirstName();
+                employeeNH.Lastname = mock.MockEmployeeLastName();
 
                 _session.Update(employeeNH);
                 _session.Transaction.Commit();
