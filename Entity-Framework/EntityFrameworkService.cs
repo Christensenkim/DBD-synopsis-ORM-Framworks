@@ -1,4 +1,5 @@
 ﻿using Entity_Framework.Models;
+using MockData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,17 @@ namespace Entity_Framework
 {
     public class EntityFrameworkService
     {
+        private MockProduct mock = new MockProduct();
+
         public void Insert_Test()
         {
             using (var db =  new EFDbContext())
             {
                 var prod = new Products
                 {
-                    Name = "KIM",
-                    Category = "BIG GUY",
-                    Discontinued = true
+                    Name = mock.MockProductsName(),
+                    Category = mock.MockProductsCategory(),
+                    Discontinued = mock.MockProductsDiscontinued()
                 };
 
                 db.Products.Add(prod);
