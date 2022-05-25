@@ -1,4 +1,5 @@
-﻿using Hibernate.Domain;
+﻿using FluentNHibernate.Cfg;
+using Hibernate.Domain;
 using MockData;
 using NHibernate;
 using NHibernate.Cfg;
@@ -11,25 +12,51 @@ namespace Hibernate
         private ISessionFactory _sessionFactory;
         private ISession _session;
         private MockEmployee mock = new MockEmployee();
+        private string connnectionString = @"Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;";
 
         public HibernateService()
         {
 
         }
 
+        private string getConnectionString()
+        {
+            return connnectionString;
+        }
+
+        private static ISessionFactory CreateSessionFactory()
+        {
+            return Fluently.Configure().Database(getConnectionString()).BuildSessionFactory();
+        }
+
         public void Insert_Test()
         {
-            _myconfig = new Configuration();
-            _myconfig.Configure();
-            _sessionFactory = _myconfig.BuildSessionFactory();
-            _session = _sessionFactory.OpenSession();
+            //_myconfig = new Configuration();
+            //_myconfig.Configure();
+            //_sessionFactory = _myconfig.BuildSessionFactory();
+            //_session = _sessionFactory.OpenSession();
 
-            using (_session.BeginTransaction())
+            var sessionFactory = CreateSessionFactory();
+
+
+            //using (_session.BeginTransaction())
+            //{
+            //    Employee employee = new Employee
+            //    {
+            //        FirstName = mock.MockEmployeeFirstName(),
+            //        LastName = mock.MockEmployeeLastName(),
+            //    };
+
+            //    _session.Save(employee);
+            //    _session.Transaction.Commit();
+            //}
+
+            using (var session = sessionFactory.OpenSession())
             {
                 Employee employee = new Employee
                 {
-                    Firstname = mock.MockEmployeeFirstName(),
-                    Lastname = mock.MockEmployeeLastName()
+                    FirstName = mock.MockEmployeeFirstName(),
+                    LastName = mock.MockEmployeeLastName(),
                 };
 
                 _session.Save(employee);
@@ -46,8 +73,8 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                employeeNH.Firstname = mock.MockEmployeeFirstName();
-                employeeNH.Lastname = mock.MockEmployeeLastName();
+                employeeNH.FirstName = mock.MockEmployeeFirstName();
+                employeeNH.LastName = mock.MockEmployeeLastName();
 
                 _session.Update(employeeNH);
                 _session.Transaction.Commit();

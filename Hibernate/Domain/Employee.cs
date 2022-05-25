@@ -8,8 +8,9 @@ namespace Hibernate.Domain
 {
     public class Employee
     {
-        public Guid EmployeeId { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public virtual Guid EmployeeId { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual EmployeeSkill EmployeeSkill { get; set; }
     }
 }

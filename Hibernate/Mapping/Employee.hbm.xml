@@ -9,12 +9,11 @@
 			<generator class="guid"/>
 		</id>
 		
-		<property name ="Firstname"/>
+		<property name ="FirstName"/>
 		
-		<property name ="Lastname"/>
+		<property name ="LastName"/>
 		
-		<many-to-one name ="EmployeeSkill"
-					 column="EmployeeId"/>
+		<many-to-one name ="Skill" class="[Hibernate.Domain.]EmployeeSkill" column="EmployeeId"/>
 		
 	</class>
 
@@ -27,12 +26,11 @@
 		</id>
 	</class>
 
-	<class name ="SkillDescription">
+	<class name="SkillDescription">
 		<id name="SkillId">
 			<generator class="guid"/>
 		</id>
 		<property name="Description"/>
-		<many-to-one name ="EmployeeSkill"
-			 column="SkillId"/>
+		<many-to-one name ="EmployeeSkill" class="[Hibernate.Domain.]EmployeeSkill" column="SkillId"/>
 	</class>
 </hibernate-mapping>
