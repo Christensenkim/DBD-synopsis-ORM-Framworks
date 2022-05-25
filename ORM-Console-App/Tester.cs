@@ -26,6 +26,21 @@ namespace ORM_Console_App
             Console.WriteLine("NHibernate insert time: " + watchHibernate.Elapsed.ToString());
         }
 
+        internal void Update_Test()
+        {
+            var productEF = ef.findProduct();
+            var watchEF = System.Diagnostics.Stopwatch.StartNew();
+            ef.Update_Test(productEF);
+            watchEF.Stop();
+            Console.WriteLine("Entity Framework Update time " + watchEF.Elapsed.ToString());
+
+            var productNH = hibernate.findProduct();
+            var watchHibernate = System.Diagnostics.Stopwatch.StartNew();
+            hibernate.Update_Test(productNH);
+            watchHibernate.Stop();
+            Console.WriteLine("NHibernate Update time " + watchHibernate.Elapsed.ToString());
+        }
+
         public void Delete_Test()
         {
             var productEF = ef.findProduct();
@@ -40,5 +55,7 @@ namespace ORM_Console_App
             watchHibernate.Stop();
             Console.WriteLine("NHibernate Delete time " + watchHibernate.Elapsed.ToString());
         }
+
+
     }
 }

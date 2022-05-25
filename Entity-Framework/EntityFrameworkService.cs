@@ -44,6 +44,19 @@ namespace Entity_Framework
             }
         }
 
+        public void Update_Test(Products productEF)
+        {
+            using (var db = new EFDbContext())
+            {
+                productEF.Name = mock.MockProductsName();
+                productEF.Category = mock.MockProductsCategory();
+                productEF.Discontinued = mock.MockProductsDiscontinued();
+                db.Update(productEF);
+
+                db.SaveChanges();
+            }
+        }
+
         public void Delete_Test(Products product)
         {
             using (var db = new EFDbContext())

@@ -46,6 +46,24 @@ namespace Hibernate
             //}
         }
 
+        public void Update_Test(Product productNH)
+        {
+            _myconfig = new Configuration();
+            _myconfig.Configure();
+            _sessionFactory = _myconfig.BuildSessionFactory();
+            _session = _sessionFactory.OpenSession();
+
+            using (_session.BeginTransaction())
+            {
+                productNH.Name = mock.MockProductsName();
+                productNH.Category = mock.MockProductsCategory();
+                productNH.Discontinued = mock.MockProductsDiscontinued();
+
+                _session.Update(productNH);
+                _session.Transaction.Commit();
+            }
+        }
+
         public Product findProduct()
         {
             _myconfig = new Configuration();
