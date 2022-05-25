@@ -10,10 +10,12 @@ namespace Entity_Framework
 {
     public class EFDbContext : DbContext
     {
-        //private string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
-        private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+        private string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
+        //private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
 
-        public DbSet<Products> Product { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<EmployeeSkill> EmployeeSkill { get; set; }
+        public DbSet<SkillDescription> SkillDescription { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
