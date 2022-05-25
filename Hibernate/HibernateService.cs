@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using Hibernate.Domain;
 using MockData;
 using NHibernate;
@@ -12,19 +13,22 @@ namespace Hibernate
         private ISessionFactory _sessionFactory;
         private ISession _session;
         private MockEmployee mock = new MockEmployee();
-        private string connnectionString = @"Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;";
 
         public HibernateService()
         {
 
         }
 
-        private string getConnectionString()
+        private MsSqlConfiguration getConnectionString()
         {
-            return connnectionString;
+            return MsSqlConfiguration.MsSql2005
+                .ConnectionString(c => c
+                .Server("DESKTOP-NDVLOHO")
+                .Database("HibernateTest")
+                .TrustedConnection());
         }
 
-        private static ISessionFactory CreateSessionFactory()
+        private ISessionFactory CreateSessionFactory()
         {
             return Fluently.Configure().Database(getConnectionString()).BuildSessionFactory();
         }
