@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="Hibernate"
+				   namespace="Hibernate.Domain">
+
+	<class name="Employee">
+		<id name="EmployeeID">
+			<generator class="guid"/>
+		</id>
+		<property name ="Firstname"/>
+		<property name ="Lastname"/>
+		<many-to-one name ="EmployeeSkill"
+					 column="EmployeeID"
+					 not-null="true"/>
+	</class>
+
+	<class name="EmployeeSkill">
+		<id name="EmployeeID">
+			<generator class="guid"/>
+		</id>
+		<id name="SkillID">
+			<generator class="guid"/>
+		</id>
+	</class>
+
+	<class name ="SkillDescription">
+		<id name="SkillID">
+			<generator class="guid"/>
+		</id>
+		<property name="Description"/>
+		<many-to-one name ="EmployeeSkill"
+			 column="SkillID"
+			 not-null="true"/>
+	</class>
+</hibernate-mapping>

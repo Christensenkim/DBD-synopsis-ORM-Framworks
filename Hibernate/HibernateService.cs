@@ -26,27 +26,18 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                Product product = new Product
+                Employee employee = new Employee
                 {
-                    Name = mock.MockProductsName(),
-                    Category = mock.MockProductsCategory(),
-                    Discontinued = mock.MockProductsDiscontinued()
+                    Firstname = mock.MockProductsName(),
+                    Lastname = mock.MockProductsCategory()
                 };
 
-                _session.Save(product);
+                _session.Save(employee);
                 _session.Transaction.Commit();
             }
-
-            //using (_session.BeginTransaction())
-            //{
-            //    ICriteria criteria = _session.CreateCriteria<Products>();
-            //    IList<Products> products = criteria.List<Products>();
-            //    _session.Transaction.Commit();
-            //    Console.WriteLine(products.FirstOrDefault(x => x.Name == "Kim").Id);
-            //}
         }
 
-        public void Update_Test(Product productNH)
+        public void Update_Test(Employee employeeNH)
         {
             _myconfig = new Configuration();
             _myconfig.Configure();
@@ -55,16 +46,15 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                productNH.Name = mock.MockProductsName();
-                productNH.Category = mock.MockProductsCategory();
-                productNH.Discontinued = mock.MockProductsDiscontinued();
+                employeeNH.Firstname = mock.MockProductsName();
+                employeeNH.Lastname = mock.MockProductsCategory();
 
-                _session.Update(productNH);
+                _session.Update(employeeNH);
                 _session.Transaction.Commit();
             }
         }
 
-        public Product findProduct()
+        public Employee findProduct()
         {
             _myconfig = new Configuration();
             _myconfig.Configure();
@@ -73,16 +63,16 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                ICriteria criteria = _session.CreateCriteria<Product>();
+                ICriteria criteria = _session.CreateCriteria<Employee>();
                 criteria.SetFirstResult(0);
                 criteria.SetMaxResults(1);
-                Product product = criteria.UniqueResult<Product>();
+                Employee product = criteria.UniqueResult<Employee>();
 
                 return product;
             }
         }
 
-        public void Delete_Test(Product productNH)
+        public void Delete_Test(Employee employeeNH)
         {
             _myconfig = new Configuration();
             _myconfig.Configure();
@@ -91,7 +81,7 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                _session.Delete(productNH);
+                _session.Delete(employeeNH);
                 _session.Transaction.Commit();
             }
         }
@@ -105,7 +95,7 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                var products = _session.CreateCriteria<Product>().List<Product>();
+                var employees = _session.CreateCriteria<Employee>().List<Employee>();
             }
         }
     }

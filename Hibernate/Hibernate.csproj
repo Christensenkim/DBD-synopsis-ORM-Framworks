@@ -7,14 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Mapping\Product.hbm.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Mapping\Product.hbm.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="NHibernate" Version="5.3.12" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
