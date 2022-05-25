@@ -9,10 +9,11 @@ var run = true;
 while (run)
 {
     Console.WriteLine("Top Secret ORM Speed test");
-    Console.WriteLine("1 - insert test");
-    Console.WriteLine("2 - delete test");
-    Console.WriteLine("4 - Read test");
+    Console.WriteLine("1 - Insert test");
+    Console.WriteLine("2 - Delete test");
     Console.WriteLine("3 - Update test");
+    Console.WriteLine("4 - Read test");
+    Console.WriteLine("  ");
     Console.WriteLine("0 - Exit");
     var option = Console.ReadLine();
     switch (option)
