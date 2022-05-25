@@ -28,7 +28,7 @@ namespace ORM_Console_App
 
         internal void Update_Test()
         {
-            var productEF = ef.findProduct();
+            var productEF = ef.FindEmployee();
             var watchEF = System.Diagnostics.Stopwatch.StartNew();
             ef.Update_Test(productEF);
             watchEF.Stop();
@@ -43,7 +43,7 @@ namespace ORM_Console_App
 
         public void Delete_Test()
         {
-            var productEF = ef.findProduct();
+            var productEF = ef.FindEmployee();
             var watchEF = System.Diagnostics.Stopwatch.StartNew();
             ef.Delete_Test(productEF);
             watchEF.Stop();
