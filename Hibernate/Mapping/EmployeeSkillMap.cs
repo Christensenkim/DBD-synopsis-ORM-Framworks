@@ -12,6 +12,7 @@ namespace Hibernate.Mapping
     {
         public EmployeeSkillMap()
         {
+            Id(x => x.EmployeeSkillId);
             HasMany(x => x.Employees);
             HasMany(x => x.SkillDescriptions);
         }

@@ -31,7 +31,7 @@ namespace Hibernate
         private ISessionFactory CreateSessionFactory()
         {
             return Fluently.Configure()
-                .Database(getConnectionString())
+                .Database(MsSqlConfiguration.MsSql2005.ConnectionString("Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;"))
                 .Mappings(m => m.FluentMappings
                 .AddFromAssemblyOf<HibernateService>())
                 .BuildSessionFactory();
@@ -68,7 +68,7 @@ namespace Hibernate
                         LastName = mock.MockEmployeeLastName(),
                     };
 
-                    session.SaveOrUpdate(employee);
+                    session.Save(employee);
                     transaction.Commit();
                 }
             }
