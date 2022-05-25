@@ -11,7 +11,7 @@
 			<property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
 			<!--<property name="connection.connection_string">Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;</property>-->
 			<property name="connection.connection_string">Server=LECHAMPDK;Database=HibernateTest;Trusted_Connection=True;</property>
-			<property name="show_sql">true</property>
+			<property name="show_sql">false</property>
 			<mapping assembly="Hibernate" />
 		</session-factory>
 	</hibernate-configuration>

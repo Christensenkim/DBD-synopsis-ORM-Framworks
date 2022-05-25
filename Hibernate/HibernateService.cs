@@ -77,5 +77,18 @@ namespace Hibernate
                 _session.Transaction.Commit();
             }
         }
+
+        public void Read_Test()
+        {
+            _myconfig = new Configuration();
+            _myconfig.Configure();
+            _sessionFactory = _myconfig.BuildSessionFactory();
+            _session = _sessionFactory.OpenSession();
+
+            using (_session.BeginTransaction())
+            {
+                var products = _session.CreateCriteria<Product>().List<Product>();
+            }
+        }
     }
 }

@@ -52,5 +52,13 @@ namespace Entity_Framework
                 db.SaveChanges();
             }
         }
+
+        public void Read_Test()
+        {
+            using (var db = new EFDbContext())
+            {
+                db.Product.ToList();
+            }
+        }
     }
 }

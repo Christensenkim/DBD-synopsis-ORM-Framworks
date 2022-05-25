@@ -11,6 +11,7 @@ while (run)
     Console.WriteLine("Top Secret ORM Speed test");
     Console.WriteLine("1 - insert test");
     Console.WriteLine("2 - delete test");
+    Console.WriteLine("4 - Read test");
     Console.WriteLine("0 - Exit");
     var option = Console.ReadLine();
     switch (option)
@@ -20,6 +21,9 @@ while (run)
             break;
         case "2":
             tester.Delete_Test();
+            break;
+        case "4":
+            tester.Read_Test();
             break;
         case "0":
             run = false;
