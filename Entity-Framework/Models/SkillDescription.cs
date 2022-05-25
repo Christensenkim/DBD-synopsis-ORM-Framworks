@@ -8,7 +8,8 @@ namespace Entity_Framework.Models
 {
     public class SkillDescription
     {
-        public Guid SkillID { get; set; }
+        public Guid SkillId { get; set; }
         public string Description { get; set; }
+        public ICollection<EmployeeSkill> EmployeeSkills { get; set; }
     }
 }

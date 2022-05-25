@@ -21,5 +21,7 @@ namespace Entity_Framework
         {
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        
     }
 }
