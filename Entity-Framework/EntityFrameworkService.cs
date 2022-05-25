@@ -13,8 +13,8 @@ namespace Entity_Framework
             {
                 var emp = new Employee
                 {
-                    Firstname = mock.MockEmployeeFirstName(),
-                    Lastname = mock.MockEmployeeLastName()
+                    FirstName = mock.MockEmployeeFirstName(),
+                    LastName = mock.MockEmployeeLastName()
                 };
 
                 db.Employee.Add(emp);
@@ -30,8 +30,8 @@ namespace Entity_Framework
                 var emp = new Employee
                 {
                     EmployeeId = targetToRemove.EmployeeId,
-                    Firstname = targetToRemove.Firstname,
-                    Lastname = targetToRemove.Lastname
+                    FirstName = targetToRemove.FirstName,
+                    LastName = targetToRemove.LastName
                 };
                 return emp;
             }
@@ -41,8 +41,8 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                emp.Firstname = mock.MockEmployeeFirstName();
-                emp.Lastname = mock.MockEmployeeLastName();
+                emp.FirstName = mock.MockEmployeeFirstName();
+                emp.LastName = mock.MockEmployeeLastName();
 
                 db.Update(emp);
                 db.SaveChanges();
