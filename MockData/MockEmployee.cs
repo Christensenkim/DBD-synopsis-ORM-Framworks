@@ -11,33 +11,29 @@ namespace MockData
     public class MockEmployee
     {
         private int skillCounter = 0;
+        private int firstNameCounter = 0;
+        private int lastNameCounter = 0;
         public List<string> fornavne = new List<string>();
         public List<string> efternavne = new List<string>();
         public List<string> category = new List<string>();
 
         public MockEmployee()
         {
-            fornavne.Add("Alfred ");
-            fornavne.Add("Oscar ");
-            fornavne.Add("Carl ");
-            fornavne.Add("Sofia ");
-            fornavne.Add("Laura ");
 
-            efternavne.Add("Christensen");
-            efternavne.Add("Clausen");
-            efternavne.Add("Larsen");
-            efternavne.Add("Nielsen");
-            efternavne.Add("Jørgensen");
         }
 
-        public string MockEmployeeName()
+        public string MockEmployeeFirstName()
         {
-            var random = new Random();
-            var fornavnIndex = random.Next(fornavne.Count);
-            var efternavnIndex = random.Next(efternavne.Count);
+            var firstName = "FirstName" + firstNameCounter + " ";
+            firstNameCounter++;
+            return firstName;
+        }
 
-            var result = fornavne[fornavnIndex] + efternavne[efternavnIndex];
-            return result;
+        public string MockEmployeeLastName()
+        {
+            var lastName = "LastName" + lastNameCounter;
+            lastNameCounter++;
+            return lastName;
         }
 
         public string MockSkillDescription()
