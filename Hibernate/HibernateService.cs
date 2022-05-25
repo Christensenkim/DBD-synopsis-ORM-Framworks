@@ -56,6 +56,8 @@ namespace Hibernate
             using (_session.BeginTransaction())
             {
                 ICriteria criteria = _session.CreateCriteria<Product>();
+                criteria.SetFirstResult(0);
+                criteria.SetMaxResults(1);
                 Product product = criteria.UniqueResult<Product>();
 
                 return product;

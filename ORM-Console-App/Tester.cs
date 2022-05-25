@@ -38,7 +38,7 @@ namespace ORM_Console_App
             var watchHibernate = System.Diagnostics.Stopwatch.StartNew();
             hibernate.Delete_Test(productNH);
             watchHibernate.Stop();
-            Console.WriteLine("Entity Framework Delete time " + watchEF.Elapsed.ToString());
+            Console.WriteLine("NHibernate Delete time " + watchHibernate.Elapsed.ToString());
         }
     }
 }
