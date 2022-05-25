@@ -10,7 +10,7 @@ namespace Entity_Framework
 {
     public class EFDbContext : DbContext
     {
-        private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+        private string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
 
 
         public DbSet<Products> Products { get; set; }

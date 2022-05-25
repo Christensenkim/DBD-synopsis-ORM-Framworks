@@ -9,7 +9,7 @@
 			<property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
 			<property name="query.substitutions">hqlFunctions=SQLFUNC</property>
 			<property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
-			<property name="connection.connection_string">Server=LECHAMPDK;Database=HibernateTest;Trusted_Connection=True;</property>
+			<property name="connection.connection_string">Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;</property>
 			<property name="show_sql">true</property>
 			<mapping assembly="Hibernate" />
 		</session-factory>

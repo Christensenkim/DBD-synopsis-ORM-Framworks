@@ -9,7 +9,7 @@ namespace Entity_Framework
 {
     public class EntityFrameworkService
     {
-        public void Test()
+        public void Insert_Test()
         {
             using (var db =  new EFDbContext())
             {
@@ -22,6 +22,23 @@ namespace Entity_Framework
 
                 db.Products.Add(prod);
                 db.SaveChanges();
+            }
+        }
+
+        public Products findProduct()
+        {
+            using (var db = new EFDbContext())
+            {
+                var targetToRemove = db.Products.First();
+                return targetToRemove;
+            }
+        }
+
+        public void Delete_Test(Products product)
+        {
+            using (var db = new EFDbContext())
+            {
+                db.Products.Remove(product);
             }
         }
     }
