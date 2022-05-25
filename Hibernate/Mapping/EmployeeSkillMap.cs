@@ -13,8 +13,8 @@ namespace Hibernate.Mapping
         public EmployeeSkillMap()
         {
             Id(x => x.EmployeeSkillId);
-            HasMany(x => x.Employees);
-            HasMany(x => x.SkillDescriptions);
+            HasMany(x => x.Employees).Inverse().Cascade.All();
+            HasMany(x => x.SkillDescriptions).Inverse().Cascade.All();
         }
     }
 }

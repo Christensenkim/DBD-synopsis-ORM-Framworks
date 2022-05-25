@@ -4,6 +4,7 @@ using Hibernate.Domain;
 using MockData;
 using NHibernate;
 using NHibernate.Cfg;
+using System.Collections.Generic;
 
 namespace Hibernate
 {
@@ -62,13 +63,39 @@ namespace Hibernate
             {
                 using (var transaction = session.BeginTransaction())
                 {
+                    
+                    var skillDescription = new SkillDescription
+                    {
+                        SkillId = Guid.NewGuid(),
+                        Description = "Halløj"
+                    };
+
+                    var list = new List<SkillDescription>();
+                    list.Add(skillDescription);
+
                     Employee employee = new Employee
                     {
+                        EmployeeId = Guid.NewGuid(),
                         FirstName = mock.MockEmployeeFirstName(),
                         LastName = mock.MockEmployeeLastName(),
                     };
 
-                    session.Save(employee);
+                    var emplist = new List<Employee>();
+                    emplist.Add(employee);
+
+                    var employeeSkill = new EmployeeSkill
+                    {
+                        EmployeeSkillId = Guid.NewGuid(),
+                        EmployeeId = Guid.NewGuid(),
+                        SkillId = Guid.NewGuid(),
+                        SkillDescriptions = list,
+                        Employees = emplist
+                    };
+
+
+
+                    session.SaveOrUpdate(employeeSkill);
+
                     transaction.Commit();
                 }
             }
