@@ -29,7 +29,7 @@ namespace Entity_Framework
                 var targetToRemove = db.Employee.FirstOrDefault();
                 var emp = new Employee
                 {
-                    EmployeeID = targetToRemove.EmployeeID,
+                    EmployeeId = targetToRemove.EmployeeId,
                     Firstname = targetToRemove.Firstname,
                     Lastname = targetToRemove.Lastname
                 };
