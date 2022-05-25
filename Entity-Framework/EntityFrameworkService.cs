@@ -5,55 +5,55 @@ namespace Entity_Framework
 {
     public class EntityFrameworkService
     {
-        private MockProduct mock = new MockProduct();
+        private MockEmployee mock = new MockEmployee();
 
         public void Insert_Test()
         {
             using (var db =  new EFDbContext())
             {
-                var prod = new Employee
+                var emp = new Employee
                 {
-                    Firstname = mock.MockProductsName(),
-                    Lastname = mock.MockProductsCategory(),
+                    Firstname = mock.MockEmployeeFirstName(),
+                    Lastname = mock.MockEmployeeLastName()
                 };
 
-                db.Employee.Add(prod);
+                db.Employee.Add(emp);
                 db.SaveChanges();
             }
         }
 
-        public Employee findProduct()
+        public Employee FindEmployee()
         {
             using (var db = new EFDbContext())
             {
                 var targetToRemove = db.Employee.FirstOrDefault();
-                var employee = new Employee
+                var emp = new Employee
                 {
                     EmployeeID = targetToRemove.EmployeeID,
                     Firstname = targetToRemove.Firstname,
-                    Lastname = targetToRemove.Lastname,
+                    Lastname = targetToRemove.Lastname
                 };
-                return employee;
+                return emp;
             }
         }
 
-        public void Update_Test(Employee employeeEF)
+        public void Update_Test(Employee emp)
         {
             using (var db = new EFDbContext())
             {
-                employeeEF.Firstname = mock.MockProductsName();
-                employeeEF.Lastname = mock.MockProductsCategory();
-                db.Update(employeeEF);
+                emp.Firstname = mock.MockEmployeeFirstName();
+                emp.Lastname = mock.MockEmployeeLastName();
 
+                db.Update(emp);
                 db.SaveChanges();
             }
         }
 
-        public void Delete_Test(Employee employee)
+        public void Delete_Test(Employee emp)
         {
             using (var db = new EFDbContext())
             {
-                db.Employee.Remove(employee);
+                db.Employee.Remove(emp);
                 db.SaveChanges();
             }
         }

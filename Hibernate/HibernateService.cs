@@ -10,7 +10,7 @@ namespace Hibernate
         private Configuration _myconfig;
         private ISessionFactory _sessionFactory;
         private ISession _session;
-        private MockProduct mock = new MockProduct();
+        private MockEmployee mock = new MockEmployee();
 
         public HibernateService()
         {
