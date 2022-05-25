@@ -1,4 +1,5 @@
 ﻿using Hibernate.Domain;
+using MockData;
 using NHibernate;
 using NHibernate.Cfg;
 
@@ -9,6 +10,7 @@ namespace Hibernate
         private Configuration _myconfig;
         private ISessionFactory _sessionFactory;
         private ISession _session;
+        private MockProduct mock = new MockProduct();
 
         public HibernateService()
         {
@@ -26,9 +28,9 @@ namespace Hibernate
             {
                 Product product = new Product
                 {
-                    Name = "Kim",
-                    Category = "BIG GUY",
-                    Discontinued = true,
+                    Name = mock.MockProductsName(),
+                    Category = mock.MockProductsCategory(),
+                    Discontinued = mock.MockProductsDiscontinued()
                 };
 
                 _session.Save(product);
