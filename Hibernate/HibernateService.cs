@@ -10,7 +10,7 @@ namespace Hibernate
         private Configuration _myconfig;
         private ISessionFactory _sessionFactory;
         private ISession _session;
-        private MockProduct mock = new MockProduct();
+        private MockEmployee mock = new MockEmployee();
 
         public HibernateService()
         {
@@ -28,8 +28,8 @@ namespace Hibernate
             {
                 Product product = new Product
                 {
-                    Name = mock.MockProductsName(),
-                    Category = mock.MockProductsCategory(),
+                    Name = mock.MockEmployeeName(),
+                    Category = mock.MockSkillDescription(),
                     Discontinued = mock.MockProductsDiscontinued()
                 };
 
@@ -55,8 +55,8 @@ namespace Hibernate
 
             using (_session.BeginTransaction())
             {
-                productNH.Name = mock.MockProductsName();
-                productNH.Category = mock.MockProductsCategory();
+                productNH.Name = mock.MockEmployeeName();
+                productNH.Category = mock.MockSkillDescription();
                 productNH.Discontinued = mock.MockProductsDiscontinued();
 
                 _session.Update(productNH);

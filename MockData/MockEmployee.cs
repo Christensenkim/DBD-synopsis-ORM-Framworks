@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace MockData
 {
-    public class MockProduct
+    public class MockEmployee
     {
+        private int skillCounter = 0;
         public List<string> fornavne = new List<string>();
         public List<string> efternavne = new List<string>();
         public List<string> category = new List<string>();
 
-        public MockProduct()
+        public MockEmployee()
         {
             fornavne.Add("Alfred ");
             fornavne.Add("Oscar ");
@@ -27,15 +28,9 @@ namespace MockData
             efternavne.Add("Larsen");
             efternavne.Add("Nielsen");
             efternavne.Add("Jørgensen");
-
-            category.Add("Tech Guy");
-            category.Add("Social Master");
-            category.Add("Coding Genius");
-            category.Add("SuperMario Expert");
-            category.Add("Cleaning Connoisseur");
         }
 
-        public string MockProductsName()
+        public string MockEmployeeName()
         {
             var random = new Random();
             var fornavnIndex = random.Next(fornavne.Count);
@@ -45,18 +40,11 @@ namespace MockData
             return result;
         }
 
-        public string MockProductsCategory()
+        public string MockSkillDescription()
         {
-            var random = new Random();
-            var categoryIndex = random.Next(category.Count);
-
-            return category[categoryIndex];
-        }
-
-        public bool MockProductsDiscontinued()
-        {
-            var discontinued = new Random().Next(100) <= 50;
-            return discontinued;
+            var stringSkillDescription = "Skill Number " + skillCounter;
+            skillCounter++;
+            return stringSkillDescription;
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Entity_Framework.Models
     public class EmployeeSkill
     {
         public Guid EmployeeID { get; set; }
-        public int SkillID { get; set; }
+        public Guid SkillID { get; set; }
     }
 }

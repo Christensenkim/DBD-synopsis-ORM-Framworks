@@ -10,7 +10,7 @@ namespace Entity_Framework
 {
     public class EntityFrameworkService
     {
-        private MockProduct mock = new MockProduct();
+        private MockEmployee mock = new MockEmployee();
 
         public void Insert_Test()
         {
@@ -18,8 +18,8 @@ namespace Entity_Framework
             {
                 var prod = new Products
                 {
-                    Name = mock.MockProductsName(),
-                    Category = mock.MockProductsCategory(),
+                    Name = mock.MockEmployeeName(),
+                    Category = mock.MockSkillDescription(),
                     Discontinued = mock.MockProductsDiscontinued()
                 };
 
@@ -48,8 +48,8 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                productEF.Name = mock.MockProductsName();
-                productEF.Category = mock.MockProductsCategory();
+                productEF.Name = mock.MockEmployeeName();
+                productEF.Category = mock.MockSkillDescription();
                 productEF.Discontinued = mock.MockProductsDiscontinued();
                 db.Update(productEF);
 
