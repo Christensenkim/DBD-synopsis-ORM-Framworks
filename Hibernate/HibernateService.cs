@@ -30,7 +30,11 @@ namespace Hibernate
 
         private ISessionFactory CreateSessionFactory()
         {
-            return Fluently.Configure().Database(getConnectionString()).BuildSessionFactory();
+            return Fluently.Configure()
+                .Database(getConnectionString())
+                .Mappings(m => m.FluentMappings
+                .AddFromAssemblyOf<HibernateService>())
+                .BuildSessionFactory();
         }
 
         public void Insert_Test()
@@ -39,9 +43,6 @@ namespace Hibernate
             //_myconfig.Configure();
             //_sessionFactory = _myconfig.BuildSessionFactory();
             //_session = _sessionFactory.OpenSession();
-
-            var sessionFactory = CreateSessionFactory();
-
 
             //using (_session.BeginTransaction())
             //{
@@ -55,16 +56,21 @@ namespace Hibernate
             //    _session.Transaction.Commit();
             //}
 
+            var sessionFactory = CreateSessionFactory();
+
             using (var session = sessionFactory.OpenSession())
             {
-                Employee employee = new Employee
+                using (var transaction = session.BeginTransaction())
                 {
-                    FirstName = mock.MockEmployeeFirstName(),
-                    LastName = mock.MockEmployeeLastName(),
-                };
+                    Employee employee = new Employee
+                    {
+                        FirstName = mock.MockEmployeeFirstName(),
+                        LastName = mock.MockEmployeeLastName(),
+                    };
 
-                _session.Save(employee);
-                _session.Transaction.Commit();
+                    session.SaveOrUpdate(employee);
+                    transaction.Commit();
+                }
             }
         }
 
