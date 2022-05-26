@@ -1,7 +1,23 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Entity_Framework;
-using Hibernate;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ORM_Console_App;
+
+
+
+string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
+//private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+
+var options = new DbContextOptionsBuilder<EFDbContext>()
+    .UseSqlServer(connectionString)
+    .Options;
+
+using var db = new EFDbContext(options);
+db.Database.EnsureDeleted();
+db.Database.EnsureCreated();
+
+
 
 var tester = new Tester();
 var run = true;

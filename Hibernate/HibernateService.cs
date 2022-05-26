@@ -28,17 +28,17 @@ namespace Hibernate
 
         private ISessionFactory CreateSessionFactory()
         {
-            //return Fluently.Configure()
-            //    .Database(MsSqlConfiguration.MsSql2005.ConnectionString("Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;"))
-            //    .Mappings(m => m.FluentMappings
-            //    .AddFromAssemblyOf<HibernateService>())
-            //    .BuildSessionFactory();
-
             return Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2005.ConnectionString("Server=LECHAMPDK;Database=HibernateTest;Trusted_Connection=True;"))
+                .Database(MsSqlConfiguration.MsSql2005.ConnectionString("Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;"))
                 .Mappings(m => m.FluentMappings
                 .AddFromAssemblyOf<HibernateService>())
                 .BuildSessionFactory();
+
+            //return Fluently.Configure()
+            //    .Database(MsSqlConfiguration.MsSql2005.ConnectionString("Server=LECHAMPDK;Database=HibernateTest;Trusted_Connection=True;"))
+            //    .Mappings(m => m.FluentMappings
+            //    .AddFromAssemblyOf<HibernateService>())
+            //    .BuildSessionFactory();
         }
 
         public void Insert_Test()

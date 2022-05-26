@@ -11,13 +11,24 @@ namespace Entity_Framework
         {
             using (var db =  new EFDbContext())
             {
-                var emp = new Employee
+                var emp = new Employee()
                 {
                     FirstName = mock.MockEmployeeFirstName(),
-                    LastName = mock.MockEmployeeLastName()
+                    LastName = mock.MockEmployeeLastName(),
                 };
 
-                db.Employee.Add(emp);
+                var empskilldesc = new SkillDescription()
+                {
+                    Description = mock.MockSkillDescription(),
+                };
+
+                var empskill = new EmployeeSkill()
+                {
+                    Employee = emp,
+                    SkillDescription = empskilldesc
+                };
+
+                db.EmployeeSkill.Add(empskill);
                 db.SaveChanges();
             }
         }

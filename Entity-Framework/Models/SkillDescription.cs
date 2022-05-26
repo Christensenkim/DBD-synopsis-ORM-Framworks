@@ -9,8 +9,7 @@ namespace Entity_Framework.Models
 {
     public class SkillDescription
     {
-        [Key]
-        public Guid SkillId { get; set; }
+        public Guid SkillDescriptionId { get; set; }
         public string Description { get; set; }
         public ICollection<EmployeeSkill> EmployeeSkills { get; set; }
     }

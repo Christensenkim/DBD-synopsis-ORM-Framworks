@@ -10,10 +10,7 @@ namespace Entity_Framework.Models
 {
     public class EmployeeSkill
     {
-        [Key, Column(Order = 1)]
-        public Guid EmployeeId { get; set; }
-        [Key, Column(Order = 2)]
-        public Guid SkillId { get; set; }
+        public Guid EmployeeSkillId { get; set; }
         public Employee Employee { get; set; }
         public SkillDescription SkillDescription { get; set; }
     }

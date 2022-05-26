@@ -10,8 +10,19 @@ namespace Entity_Framework
 {
     public class EFDbContext : DbContext
     {
-        //private string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
-        private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+
+        string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
+        //private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+
+
+        public EFDbContext()
+        {
+        }
+
+        public EFDbContext(DbContextOptions<EFDbContext> options) : base(options)
+        {
+
+        }
 
         public DbSet<Employee> Employee { get; set; }
         public DbSet<EmployeeSkill> EmployeeSkill { get; set; }
@@ -20,11 +31,6 @@ namespace Entity_Framework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(connectionString);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<EmployeeSkill>().HasKey(ES => new { ES.EmployeeId, ES.SkillId });
         }
     }
 }
