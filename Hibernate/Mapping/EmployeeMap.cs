@@ -15,7 +15,7 @@ namespace Hibernate.Mapping
             Id(x => x.EmployeeId);
             Map(x => x.FirstName);
             Map(x => x.LastName);
-            HasMany(x => x.Employeeskills);
+            HasMany(x => x.Employeeskills).Cascade.AllDeleteOrphan().Inverse();
         }
     }
 }
