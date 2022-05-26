@@ -74,8 +74,9 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                var res = db.Employee.Include("EmployeeSkills").ToList();
-                //return db.Carts.Include("Album").Where(cart => cart.CartId == ShoppingCartID).ToList();
+                var x =  db.Employee
+                    .Include(x => x.EmployeeSkills)
+                    .ToList();
 
                 Console.ReadLine();
             }

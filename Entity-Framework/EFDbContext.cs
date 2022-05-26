@@ -21,7 +21,7 @@ namespace Entity_Framework
 
         public EFDbContext(DbContextOptions<EFDbContext> options) : base(options)
         {
-
+            
         }
 
         public DbSet<Employee> Employee { get; set; }
@@ -30,7 +30,9 @@ namespace Entity_Framework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer(connectionString);
         }
     }
 }

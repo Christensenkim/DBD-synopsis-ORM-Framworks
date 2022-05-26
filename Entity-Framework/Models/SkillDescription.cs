@@ -11,6 +11,6 @@ namespace Entity_Framework.Models
     {
         public Guid SkillDescriptionId { get; set; }
         public string Description { get; set; }
-        public ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+        public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
     }
 }

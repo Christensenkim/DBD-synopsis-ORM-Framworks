@@ -13,6 +13,6 @@ namespace Entity_Framework.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public List<EmployeeSkill> EmployeeSkills { get; set; } = new List<EmployeeSkill>();
+        public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
     }
 }

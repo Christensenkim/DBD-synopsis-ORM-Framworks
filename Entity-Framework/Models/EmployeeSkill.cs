@@ -11,7 +11,7 @@ namespace Entity_Framework.Models
     public class EmployeeSkill
     {
         public Guid EmployeeSkillId { get; set; }
-        public Employee Employee { get; set; }
-        public SkillDescription SkillDescription { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual SkillDescription SkillDescription { get; set; }
     }
 }
