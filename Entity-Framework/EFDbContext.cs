@@ -25,6 +25,7 @@ namespace Entity_Framework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EmployeeSkill>().HasKey(ES => new { ES.EmployeeId, ES.SkillId });
+            //modelBuilder.Entity<Employee>().HasMany(x => x.EmployeeSkills).WithOne(y => y.Employee);
         }
     }
 }

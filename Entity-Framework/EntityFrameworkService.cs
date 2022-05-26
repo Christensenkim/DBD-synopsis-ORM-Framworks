@@ -1,5 +1,6 @@
 ﻿using Entity_Framework.Models;
 using MockData;
+using System.Data.Entity;
 
 namespace Entity_Framework
 {
@@ -17,7 +18,18 @@ namespace Entity_Framework
                     LastName = mock.MockEmployeeLastName()
                 };
 
-                db.Employee.Add(emp);
+                var empskilldesc = new SkillDescription()
+                {
+                    Description = mock.MockSkillDescription(),
+                };
+
+                var empskill = new EmployeeSkill()
+                {
+                    Employee = emp,
+                    SkillDescription = empskilldesc
+                };
+
+                db.EmployeeSkill.Add(empskill);
                 db.SaveChanges();
             }
         }
@@ -62,7 +74,10 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                db.Employee.ToList();
+                var res = db.Employee.Include("EmployeeSkills").ToList();
+                //return db.Carts.Include("Album").Where(cart => cart.CartId == ShoppingCartID).ToList();
+
+                Console.ReadLine();
             }
         }
     }
