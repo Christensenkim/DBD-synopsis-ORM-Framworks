@@ -58,10 +58,10 @@ namespace ORM_Console_App
 
         public void Read_Test()
         {
-            var watchEF = System.Diagnostics.Stopwatch.StartNew();
-            ef.Read_Test();
-            watchEF.Stop();
-            Console.WriteLine("Entity Framework read time " + watchEF.Elapsed.ToString());
+            //var watchEF = System.Diagnostics.Stopwatch.StartNew();
+            //ef.Read_Test();
+            //watchEF.Stop();
+            //Console.WriteLine("Entity Framework read time " + watchEF.Elapsed.ToString());
 
             var watchHibernate = System.Diagnostics.Stopwatch.StartNew();
             hibernate.Read_Test();

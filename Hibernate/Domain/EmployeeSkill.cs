@@ -11,8 +11,8 @@ namespace Hibernate.Domain
         public virtual Guid EmployeeSkillId { get; set; }
         public virtual Guid EmployeeId { get; set; }
         public virtual Guid SkillId { get; set; }
-        public virtual IList<Employee> Employees { get; set; }
-        public virtual IList<SkillDescription> SkillDescriptions { get; set; }
+        public virtual Employee Employee { get; set; } = new Employee();
+        public virtual SkillDescription SkillDescription { get; set; } = new SkillDescription();
 
     }
 }

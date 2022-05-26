@@ -31,6 +31,12 @@ namespace Hibernate
 
         private ISessionFactory CreateSessionFactory()
         {
+            //return Fluently.Configure()
+            //    .Database(MsSqlConfiguration.MsSql2005.ConnectionString("Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;"))
+            //    .Mappings(m => m.FluentMappings
+            //    .AddFromAssemblyOf<HibernateService>())
+            //    .BuildSessionFactory();
+
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2005.ConnectionString("Server=DESKTOP-NDVLOHO;Database=HibernateTest;Trusted_Connection=True;"))
                 .Mappings(m => m.FluentMappings
@@ -63,40 +69,37 @@ namespace Hibernate
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    
-                    var skillDescription = new SkillDescription
+                    var emp = new Employee()
                     {
-                        SkillId = Guid.NewGuid(),
-                        Description = "Halløj"
-                    };
-
-                    var list = new List<SkillDescription>();
-                    list.Add(skillDescription);
-
-                    Employee employee = new Employee
-                    {
-                        EmployeeId = Guid.NewGuid(),
                         FirstName = mock.MockEmployeeFirstName(),
                         LastName = mock.MockEmployeeLastName(),
                     };
 
-                    var emplist = new List<Employee>();
-                    emplist.Add(employee);
-
-                    var employeeSkill = new EmployeeSkill
+                    var empskilldesc = new SkillDescription()
                     {
-                        EmployeeSkillId = Guid.NewGuid(),
-                        EmployeeId = Guid.NewGuid(),
-                        SkillId = Guid.NewGuid(),
-                        SkillDescriptions = list,
-                        Employees = emplist
+                        Description = mock.MockSkillDescription(),
+                    };
+
+                    var empskill = new EmployeeSkill()
+                    {
+                        Employee = emp,
+                        SkillDescription = empskilldesc
                     };
 
 
-
-                    session.SaveOrUpdate(employeeSkill);
+                    session.SaveOrUpdate(empskill);
 
                     transaction.Commit();
+                }
+
+                using (var transaction = session.BeginTransaction())
+                {
+                    var x = session.CreateCriteria<EmployeeSkill>().List<EmployeeSkill>();
+
+                    foreach (var skill in x)
+                    {
+                        Console.WriteLine(skill.Employee.FirstName);
+                    }
                 }
             }
         }
@@ -152,14 +155,29 @@ namespace Hibernate
 
         public void Read_Test()
         {
-            _myconfig = new Configuration();
-            _myconfig.Configure();
-            _sessionFactory = _myconfig.BuildSessionFactory();
-            _session = _sessionFactory.OpenSession();
+            //_myconfig = new Configuration();
+            //_myconfig.Configure();
+            //_sessionFactory = _myconfig.BuildSessionFactory();
+            //_session = _sessionFactory.OpenSession();
 
-            using (_session.BeginTransaction())
+            //using (_session.BeginTransaction())
+            //{
+            //    var employees = _session.CreateCriteria<Employee>().List<Employee>();
+            //}
+
+            var sessionFactory = CreateSessionFactory();
+
+            using (var session = sessionFactory.OpenSession())
             {
-                var employees = _session.CreateCriteria<Employee>().List<Employee>();
+                using (var transaction = session.BeginTransaction())
+                {
+                    var x = session.CreateCriteria<Employee>().List<Employee>();
+
+                    foreach (var item in x)
+                    {
+                        Console.WriteLine(item.Employeeskills);
+                    }
+                }
             }
         }
     }
