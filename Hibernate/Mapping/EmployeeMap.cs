@@ -15,7 +15,8 @@ namespace Hibernate.Mapping
             Id(x => x.EmployeeId);
             Map(x => x.FirstName);
             Map(x => x.LastName);
-            References(x => x.EmployeeSkill);
+            HasMany(x => x.EmployeeSkills);
+            //References(x => x.EmployeeSkill);
         }
     }
 }

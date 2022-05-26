@@ -10,9 +10,9 @@ namespace MockData
 {
     public class MockEmployee
     {
-        private int skillCounter = 0;
-        private int firstNameCounter = 0;
-        private int lastNameCounter = 0;
+        private int skillCounter = 1;
+        private int firstNameCounter = 1;
+        private int lastNameCounter = 1;
         public List<string> fornavne = new List<string>();
         public List<string> efternavne = new List<string>();
         public List<string> category = new List<string>();

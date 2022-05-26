@@ -8,10 +8,9 @@ namespace Hibernate.Domain
 {
     public class SkillDescription
     {
-        public virtual Guid SkillId { get; set; }
+        public virtual int SkillId { get; set; }
         public virtual string Description { get; set; }
-        public virtual EmployeeSkill EmployeeSkill { get; set; }
-
+        public virtual IList<EmployeeSkill> EmployeeSkills { get; set; } = new List<EmployeeSkill>();
 
     }
 }
