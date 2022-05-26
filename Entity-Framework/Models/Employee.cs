@@ -12,6 +12,7 @@ namespace Entity_Framework.Models
         public Guid EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+
+        public List<EmployeeSkill> EmployeeSkills { get; set; } = new List<EmployeeSkill>();
     }
 }

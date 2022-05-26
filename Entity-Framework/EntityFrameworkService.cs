@@ -1,5 +1,6 @@
 ﻿using Entity_Framework.Models;
 using MockData;
+using System.Data.Entity;
 
 namespace Entity_Framework
 {
@@ -73,7 +74,10 @@ namespace Entity_Framework
         {
             using (var db = new EFDbContext())
             {
-                db.Employee.ToList();
+                var res = db.Employee.Include("EmployeeSkills").ToList();
+                //return db.Carts.Include("Album").Where(cart => cart.CartId == ShoppingCartID).ToList();
+
+                Console.ReadLine();
             }
         }
     }
