@@ -11,8 +11,8 @@ namespace Entity_Framework
     public class EFDbContext : DbContext
     {
 
-        string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
-        //string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+        //string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
+        string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
 
 
         public EFDbContext()

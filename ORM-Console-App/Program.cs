@@ -6,8 +6,8 @@ using ORM_Console_App;
 
 
 
-string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
-//private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+//string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
+string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
 
 var options = new DbContextOptionsBuilder<EFDbContext>()
     .UseSqlServer(connectionString)
