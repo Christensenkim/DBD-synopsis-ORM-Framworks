@@ -12,7 +12,7 @@ namespace Entity_Framework
     {
 
         string connectionString = @"Server=DESKTOP-NDVLOHO;Database=EntityFramework;Trusted_Connection=True;";
-        //private string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
+        //string connectionString = @"Server=LECHAMPDK;Database=EntityFramework;Trusted_Connection=True;";
 
 
         public EFDbContext()
@@ -33,6 +33,11 @@ namespace Entity_Framework
             optionsBuilder
                 .UseLazyLoadingProxies()
                 .UseSqlServer(connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
         }
     }
 }

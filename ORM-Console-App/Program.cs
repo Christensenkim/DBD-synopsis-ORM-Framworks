@@ -14,7 +14,7 @@ var options = new DbContextOptionsBuilder<EFDbContext>()
     .Options;
 
 using var db = new EFDbContext(options);
-db.Database.EnsureDeleted();
+//db.Database.EnsureDeleted();
 db.Database.EnsureCreated();
 
 

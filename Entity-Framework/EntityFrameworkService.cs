@@ -12,25 +12,28 @@ namespace Entity_Framework
         {
             using (var db =  new EFDbContext())
             {
-                var emp = new Employee()
+                for (int i = 0; i < 10000; i++)
                 {
-                    FirstName = mock.MockEmployeeFirstName(),
-                    LastName = mock.MockEmployeeLastName(),
-                };
+                    var emp = new Employee()
+                    {
+                        FirstName = mock.MockEmployeeFirstName(),
+                        LastName = mock.MockEmployeeLastName(),
+                    };
 
-                var empskilldesc = new SkillDescription()
-                {
-                    Description = mock.MockSkillDescription(),
-                };
+                    var empskilldesc = new SkillDescription()
+                    {
+                        Description = mock.MockSkillDescription(),
+                    };
 
-                var empskill = new EmployeeSkill()
-                {
-                    Employee = emp,
-                    SkillDescription = empskilldesc
-                };
+                    var empskill = new EmployeeSkill()
+                    {
+                        Employee = emp,
+                        SkillDescription = empskilldesc
+                    };
 
-                db.EmployeeSkill.Add(empskill);
-                db.SaveChanges();
+                    db.EmployeeSkill.Add(empskill);
+                    db.SaveChanges();
+                }
             }
         }
 
@@ -77,8 +80,6 @@ namespace Entity_Framework
                 var x =  db.Employee
                     .Include(x => x.EmployeeSkills)
                     .ToList();
-
-                Console.ReadLine();
             }
         }
     }
